@@ -10,7 +10,6 @@ This application will help me practice constructors, polymorphism, promises, tes
 
 ## Table of Contents
 
-If your README is long, add a table of contents to make it easy for users to find what they need.
 - [<Team-Webpage-Generator>](#team-webpage-generator)
   - [Description](#description)
   - [Table of Contents](#table-of-contents)
