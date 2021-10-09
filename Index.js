@@ -2,9 +2,13 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateContent = require('./content.js');
+let managerData = [];
+let engineerData = [];
+let internData = [];
+let menuData = '';
 
 // Arrays of questions
-let mnanagerQuestions = [
+let managerQuestions = [
     {
         type: 'input',
         name: 'managerName',
@@ -86,20 +90,58 @@ let internQuestions = [
     }
 ];
 
-// function to initialize the app making questions, generate content from the answers and then calling the function to write the content on the HTML file
+// function to initialize the app making manager questions, asking menu questions and checking the answer to call the appropriate function.
 function init() {
     inquirer.prompt(managerQuestions).then((answers) => {
-        
-      
-        
-        let htmlString = generateContent(data);
-        writeToHTML('index.html',htmlString);
+        managerData.push(answers);
+        console.log(managerData);
+        menu();        
     }
     );
+    
 };
+
+// Function to prompt menu, call prompts from user input, generate content from the answers and then call the function to write the content on the HTML file when the user selects Finish
+function menu() {
+    inquirer.prompt(menuQuestion).then((answer) => {
+       menuData = answer.nextStep; 
+       if (menuData === 'Add Engineer'){
+        engineer();
+       }
+       if (menuData === 'Add Intern'){
+        intern();
+       }
+       if (menuData === 'Finish'){
+         let htmlString = generateContent(answers);
+         writeToHTML('index.html',htmlString);
+        }
+    });
+    
+}
+
+// Function to prompt engineer questions
+function engineer() {
+    inquirer.prompt(engineerQuestions).then((answers) => {
+        engineerData.push(answers);
+        console.log(engineerData);
+        menu();
+    });
+    
+}
+
+// Function to prompt intern questions
+function intern() {
+    inquirer.prompt(internQuestions).then((answers) => {
+        internData.push(answers);
+        console.log(internData);
+        menu();
+    });
+
+}
+
 // function to write index.html file using file system
-function writeToHTML (filename, data){
-    fs.writeFile(filename, data, (err) => err ? console.log(err) : console.log('Success!'));
+function writeToHTML (filename, answers){
+    fs.writeFile(filename, answers, (err) => err ? console.log(err) : console.log('Success!'));
 }
 
 // Call to initialize application
