@@ -3,7 +3,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const generateContent = require('./content.js');
 
-// Array of questions
+// Arrays of questions
 let mnanagerQuestions = [
     {
         type: 'input',
@@ -24,16 +24,21 @@ let mnanagerQuestions = [
         type: 'input',
         name: 'officeNumber',
         message: 'Enter the team manager office number',
-    },
-    {
-        type: 'list',
-        name: 'nextStep',
-        message: 'What would you like to do next?',
-        choices: ['Add Engineer','Add Intern','Finish'],
-    },
+    }
         
 ];
 
+// Menu question
+
+let menuQuestion = {
+
+    type: 'list',
+    name: 'nextStep',
+    message: 'What would you like to do next?',
+    choices: ['Add Engineer','Add Intern','Finish'],
+}
+
+// Engineer questions
 let engineerQuestions = [
     {
         type: 'input',
@@ -54,15 +59,10 @@ let engineerQuestions = [
         type: 'input',
         name: 'engineerGitHub',
         message: 'Enter the engineer GitHub username',
-    },
-    {
-        type: 'list',
-        name: 'nextStep',
-        message: 'What would you like to do next?',
-        choices: ['Add Engineer','Add Intern','Finish'],
-    },
+    }
 ];
 
+// Intern questions
 let internQuestions = [
     {
         type: 'input',
@@ -83,18 +83,15 @@ let internQuestions = [
         type: 'input',
         name: 'internGitHub',
         message: 'Enter the intern GitHub username',
-    },
-    {
-        type: 'list',
-        name: 'nextStep',
-        message: 'What would you like to do next?',
-        choices: ['Add Engineer','Add Intern','Finish'],
-    },
+    }
 ];
 
 // function to initialize the app making questions, generate content from the answers and then calling the function to write the content on the HTML file
 function init() {
-    inquirer.prompt(questions).then((data) => {
+    inquirer.prompt(managerQuestions).then((answers) => {
+        
+      
+        
         let htmlString = generateContent(data);
         writeToHTML('index.html',htmlString);
     }
