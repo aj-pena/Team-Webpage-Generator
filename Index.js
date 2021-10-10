@@ -2,6 +2,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateContent = require('./content.js');
+const generateSkelleton = require('./content.js');
 let managerData = [];
 let engineerData = [];
 let internData = [];
@@ -33,7 +34,6 @@ let managerQuestions = [
 ];
 
 // Menu question
-
 let menuQuestion = {
 
     type: 'list',
@@ -112,12 +112,12 @@ function menu() {
         intern();
        }
        if (menuData === 'Finish'){
-         let htmlString = generateContent(answers);
-         writeToHTML('index.html',htmlString);
+         let htmlSkelleton = generateSkelleton();
+         writeToHTML('index.html',htmlSkelleton);
         }
     });
     
-}
+};
 
 // Function to prompt engineer questions
 function engineer() {
@@ -127,7 +127,7 @@ function engineer() {
         menu();
     });
     
-}
+};
 
 // Function to prompt intern questions
 function intern() {
@@ -137,13 +137,12 @@ function intern() {
         menu();
     });
 
-}
+};
 
-// function to write index.html file using file system
-function writeToHTML (filename, answers){
-    fs.writeFile(filename, answers, (err) => err ? console.log(err) : console.log('Success!'));
-}
+// function to write index.html basic skelleton using file system
+function writeToHTML (filename, Skelleton){
+    fs.writeFile(filename, Skelleton, (err) => err ? console.log(err) : console.log('Success!'));
+};
 
 // Call to initialize application
-
 init();
