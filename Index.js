@@ -1,12 +1,17 @@
 // import inquirer, file system module and local generateContent module
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateContent = require('./content.js');
 const generateSkelleton = require('./content.js');
+// const mainHTML = document.getElementsByName('main');
 let managerData = [];
 let engineerData = [];
 let internData = [];
 let menuData = '';
+// Variables to store cards that will then be appended to the document
+let mCard = '';
+let engCards = [];
+let intCards = [];
+
 
 // Arrays of questions
 let managerQuestions = [
@@ -114,6 +119,9 @@ function menu() {
        if (menuData === 'Finish'){
          let htmlSkelleton = generateSkelleton();
          writeToHTML('index.html',htmlSkelleton);
+         managerCard(managerData);
+         engineerCards(engineerData);
+         internCards(internData);
         }
     });
     
@@ -142,7 +150,60 @@ function intern() {
 // function to write index.html basic skelleton using file system
 function writeToHTML (filename, Skelleton){
     fs.writeFile(filename, Skelleton, (err) => err ? console.log(err) : console.log('Success!'));
+    
 };
+
+// Function to create the manager card and store it in a global variable
+function managerCard (data){
+    mCard = `
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">${data.managerName}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
+                <p class="card-text">${data.managerID}</p>
+                <a href="#" class="card-link">${data.managerEmail}</a>
+                <a href="#" class="card-link">${data.officeNumber}</a>
+            </div>
+        </div>`;
+    return mCard;    
+};
+
+// Function to create engineer cards. Parses through the array of engineerData and returns an array of engineer cards.
+function engineerCards (data){
+    for (let i = 0; i < data.length; i ++){
+        engCards.push( `
+        <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">${data[i].engineerName}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
+          <p class="card-text">${data[i].engineerID}</p>
+          <a href="#" class="card-link">${data[i].engineerEmail}</a>
+          <a href="#" class="card-link">${data[i].engineerGitHub}</a>
+        </div>
+        </div>`);
+    };
+    // returns an array of engineer cards
+    return engCards;
+};
+
+// // Function to create intern cards. Parses through the array of internData and returns an array of intern cards.
+function internCards (data){
+    for (let i = 0; i < data.length; i ++){
+        intCards.push( `
+        <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">${data[i].internName}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
+          <p class="card-text">${data[i].internID}</p>
+          <a href="#" class="card-link">${data[i].internEmail}</a>
+          <a href="#" class="card-link">${data[i].internGitHub}</a>
+        </div>
+        </div>`);
+    };
+    // returns an array of intern cards
+    return engCards;
+};
+
 
 // Call to initialize application
 init();
