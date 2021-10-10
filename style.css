@@ -1,0 +1,24 @@
+body {
+    
+}
+
+h1 {
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-flow: row wrap;    
+    justify-content:space-around;
+}
+
+section {
+    flex: initial;
+    background-color:darkblue;
+    color: white;
+    border: solid purple 1px;
+    text-align: center;
+    margin-top: 1%;
+    height: 400px;
+    width: 600px;
+}
