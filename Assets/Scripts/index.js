@@ -117,11 +117,11 @@ function menu() {
         intern();
        }
        if (menuData === 'Finish'){
-         let htmlSkelleton = generateSkelleton();
-         writeToHTML('index.html',htmlSkelleton);
-         managerCard(managerData);
-         engineerCards(engineerData);
-         internCards(internData);
+        managerCard(managerData);
+        engineerCards(engineerData);
+        internCards(internData);        
+        let htmlSkelleton = generateSkelleton();         
+        writeToHTML('index.html',htmlSkelleton);         
         }
     });
     
@@ -149,7 +149,8 @@ function intern() {
 
 // function to write index.html basic skelleton using file system
 function writeToHTML (filename, Skelleton){
-    fs.writeFile(filename, Skelleton, (err) => err ? console.log(err) : console.log('Success!'));
+    fs.writeFile(filename, Skelleton, (err) =>
+     err ? console.log(err) : console.log('Success!'));
     
 };
 

@@ -1,0 +1,42 @@
+body {
+    
+}
+header {
+    
+    min-height: 20vh;
+    
+}
+
+h1 {
+    text-align: center;
+    margin: auto;
+    line-height: 20vh !important; /* centers vertically by setting line-height = to header height*/
+    font-style: italic !important;
+}
+
+main {    
+    display: flex;
+    flex-flow: row wrap;    
+    justify-content:space-around;
+    min-height: 80vh;
+    background-image: url('https://images.unsplash.com/photo-1497316283501-6e0246fc5aa0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1423&q=80');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+section {
+    flex: initial;
+    background-color:darkblue;
+    color: white;
+    border: solid purple 1px;
+    text-align: center;
+    margin-top: 1%;
+    height: 400px;
+    width: 600px;
+}
+
+.card {
+    max-height: 300px;
+    margin-top: 2vh;
+}
