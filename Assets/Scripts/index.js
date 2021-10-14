@@ -11,6 +11,7 @@ let menuData = '';
 let mCard = '';
 let engCards = [];
 let intCards = [];
+let allCards = [];
 
 
 // Arrays of questions
@@ -119,9 +120,10 @@ function menu() {
        if (menuData === 'Finish'){
         managerCard(managerData);
         engineerCards(engineerData);
-        internCards(internData);        
-        let htmlSkelleton = generateSkelleton();         
-        writeToHTML('index.html',htmlSkelleton);         
+        internCards(internData);
+        allTheCards(mCard,engCards,intCards);                
+        writeToHTML('index.html',generateSkelleton(allCards));
+                 
         }
     });
     
@@ -159,11 +161,11 @@ function managerCard (data){
     mCard = `
         <div class="card" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title">${data.managerName}</h5>
+                <h5 class="card-title">${data[0].managerName}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
-                <p class="card-text">${data.managerID}</p>
-                <a href="#" class="card-link">${data.managerEmail}</a>
-                <a href="#" class="card-link">${data.officeNumber}</a>
+                <p class="card-text">Employee ID: ${data[0].managerID}</p>
+                <a href="#" class="card-link">Email: ${data[0].managerEmail}</a>
+                <a href="#" class="card-link">Office: ${data[0].officeNumber}</a>
             </div>
         </div>`;
     return mCard;    
@@ -176,10 +178,10 @@ function engineerCards (data){
         <div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">${data[i].engineerName}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
-          <p class="card-text">${data[i].engineerID}</p>
-          <a href="#" class="card-link">${data[i].engineerEmail}</a>
-          <a href="#" class="card-link">${data[i].engineerGitHub}</a>
+          <h6 class="card-subtitle mb-2 text-muted">Engineer</h6>
+          <p class="card-text">Employee ID: ${data[i].engineerID}</p>
+          <a href="#" class="card-link">Email: ${data[i].engineerEmail}</a>
+          <a href="#" class="card-link">GitHub: ${data[i].engineerGitHub}</a>
         </div>
         </div>`);
     };
@@ -194,17 +196,23 @@ function internCards (data){
         <div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">${data[i].internName}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
-          <p class="card-text">${data[i].internID}</p>
-          <a href="#" class="card-link">${data[i].internEmail}</a>
-          <a href="#" class="card-link">${data[i].internGitHub}</a>
+          <h6 class="card-subtitle mb-2 text-muted">Intern</h6>
+          <p class="card-text">Employee ID: ${data[i].internID}</p>
+          <a href="#" class="card-link">Email: ${data[i].internEmail}</a>
+          <a href="#" class="card-link">GitHub: ${data[i].internGitHub}</a>
         </div>
         </div>`);
     };
     // returns an array of intern cards
-    return engCards;
+    return intCards;
 };
-
+// Creates a string from all the cards
+function allTheCards(mCard, engCards, intCards) {
+    allCards[0] = mCard;
+    allCards.push(engCards,intCards);
+    allCards.join("\n");    
+    return allCards;
+}
 
 // Call to initialize application
 init();
