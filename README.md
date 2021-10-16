@@ -6,7 +6,7 @@ This Node.js application is run from the command-line. It will generate an HTML 
 
 Communication is an essential part of teamwork. Having an efficient way to accurately reach the right person at the right time can help projects run more smoothly. This application allows for other teams to have an easy way to reach the right member of the team, depending on their needs.
 
-This application will help me practice constructors, polymorphism, promises, testing and classes.
+This application will help me practice promises, template literals and testing.
 
 ## Table of Contents
 
@@ -22,41 +22,60 @@ This application will help me practice constructors, polymorphism, promises, tes
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+Go to the GitHub repo,
+Fork the repo,
+Open the CLI,
+Follow the instructions on the #Usage section of this README.
+
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+This application is run from the command line.
+It is initialized using command node index.js
+a series of prompts will follow, asking for your input.
+Answer accordingly and a index.html file will be output to the same folder of the index.js.
+
+For running the tests see the #Tests section of this README.
+
+![Example of the resulting index.html file](./Assets/Images/teamRosterWebpage.PNG)
+
+For more usage instructions, check this [walkthrough video](https://watch.screencastify.com/v/1M5CZIlGvELeJU9eEU3q)
+
 
 ## Credits
 
-- Node.js : link to primary web presence
-- File System : link to primary web presence
-- npm : link to primary web presence
-- Inquirer : link to primary web presence
-- Jest : link to primary web presence
+- [Node.js :](https://nodejs.dev/learn)
+- [File System :](https://nodejs.org/api/fs.html)
+- [npm :](https://www.npmjs.com/)
+- [Inquirer :](https://www.npmjs.com/package/inquirer)
+- [Jest :](https://jestjs.io/)
 
 ## GitHub
 
+https://github.com/aj-pena/Team-Webpage-Generator.git
 
 ## Features
 
-- Node.js /n
-- File System /n
-- npm /n
-- Inquirer /n
-- Jest /n
-- HTML /n
-- CSS /n
-- JavaScript /n
+- Node.js 
+- File System 
+- npm 
+- Inquirer 
+- Jest 
+- HTML 
+- CSS 
+- JavaScript 
 
 ## Tests
+Route: Assets/Tests
 
 Test files:
-
+content.test.js
+index.test.js
 
 How to run them:
+In the CLI,
+cd into root folder (Team-Webpage-Generator),
+run 'npm run test'.
+
+test for content.test.js should pass.
+test for index.test.js should pass but is not working. It is returning an error.
