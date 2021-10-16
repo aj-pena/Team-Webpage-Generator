@@ -216,3 +216,18 @@ function allTheCards(mCard, engCards, intCards) {
 
 // Call to initialize application
 init();
+
+module.exports = {
+    init(){},
+    menu(){},
+    engineer(){},
+    intern(){},
+    writeToHTML(){},
+    managerCard(){},
+    engineerCards(){},
+    internCards(){},
+    allTheCards(){},
+    mCard,
+    allCards,
+
+}
