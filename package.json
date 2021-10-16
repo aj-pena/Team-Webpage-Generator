@@ -4,7 +4,7 @@
   "description": "This Node.js application is run from the command-line. It will generate an HTML webpage for a software engineering team, based on the user input. The HTML webpage will display summaries for each member of the team. The summaries will include email and GitHub profiles info, name, ID and office number, etc.",
   "main": "Index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,8 @@
   "homepage": "https://github.com/aj-pena/Team-Webpage-Generator#readme",
   "dependencies": {
     "inquirer": "^8.2.0"
+  },
+  "devDependencies": {
+    "jest": "^27.2.5"
   }
 }
