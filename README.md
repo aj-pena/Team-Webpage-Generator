@@ -9,7 +9,6 @@ Communication is an essential part of teamwork. Having an efficient way to accur
 This application will help me practice promises, template literals and testing.
 
 ## Table of Contents
-
 - [<Team-Webpage-Generator>](#team-webpage-generator)
   - [Description](#description)
   - [Table of Contents](#table-of-contents)
@@ -44,11 +43,11 @@ For more usage instructions, check this [walkthrough video](https://watch.screen
 
 ## Credits
 
-- [Node.js :](https://nodejs.dev/learn)
-- [File System :](https://nodejs.org/api/fs.html)
-- [npm :](https://www.npmjs.com/)
-- [Inquirer :](https://www.npmjs.com/package/inquirer)
-- [Jest :](https://jestjs.io/)
+- [Node.js](https://nodejs.dev/learn)
+- [File System](https://nodejs.org/api/fs.html)
+- [npm](https://www.npmjs.com/)
+- [Inquirer](https://www.npmjs.com/package/inquirer)
+- [Jest](https://jestjs.io/)
 
 ## GitHub
 
