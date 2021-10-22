@@ -1,4 +1,5 @@
-const imp = require('../Scripts/index');
+const {allTheCards} = require('../index');
+
 
 describe('cards', () => {
     //  Matcher error: received value must be a string
@@ -34,17 +35,18 @@ describe('cards', () => {
 
         it('should return a string from all the arrays passed-in as arguments', () => {
             // Arrange
-                const a = [1];
+                const a = '1';
                 const b = [4,5,6];
                 const c = [7,8,9];
-                let all = imp.allCards;
-                all = [];
+                // let all = imp.allCards;
+                // all = [];
                 
                 // Act
-                let abc = imp.allTheCards(a,b,c);
+                let abc = allTheCards(a,b,c);
+                
                 
                 // Assess
-                expect(abc).toContain('9');
+                expect(abc).toContain(`1456789`);
 
 
         })

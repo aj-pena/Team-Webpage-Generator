@@ -1,4 +1,4 @@
-const generateSkelleton = require('../Scripts/content');
+const generateSkelleton = require('../utils/content');
 
 describe('content', () => {
     it('should return a string with a substitution for data of cards', () => {

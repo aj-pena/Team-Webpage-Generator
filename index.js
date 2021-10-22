@@ -1,18 +1,14 @@
 // import inquirer, file system module and local generateContent module
+
+// !! FIRST AFTER RECEIVING FEEDBACK I NEED TO PUSH THIS VERSION AS IT IS TO THE REPO !!
+
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateSkelleton = require('./content.js');
-// const mainHTML = document.getElementsByName('main');
+const generateSkelleton = require('./utils/content.js');
 let managerData = [];
+let menuData = '';
 let engineerData = [];
 let internData = [];
-let menuData = '';
-// Variables to store cards that will then be appended to the document
-let mCard = '';
-let engCards = [];
-let intCards = [];
-let allCards = [];
-
 
 // Arrays of questions
 let managerQuestions = [
@@ -98,12 +94,15 @@ let internQuestions = [
 
 // function to initialize the app making manager questions, asking menu questions and checking the answer to call the appropriate function.
 function init() {
+    
     inquirer.prompt(managerQuestions).then((answers) => {
+       
         managerData.push(answers);
         console.log(managerData);
         menu();        
+                        
     }
-    );
+    );    
     
 };
 
@@ -117,13 +116,12 @@ function menu() {
        if (menuData === 'Add Intern'){
         intern();
        }
-       if (menuData === 'Finish'){
-        managerCard(managerData);
-        engineerCards(engineerData);
-        internCards(internData);
-        allTheCards(mCard,engCards,intCards);                
-        writeToHTML('index.html',generateSkelleton(allCards));
-                 
+       if (menuData === 'Finish'){        
+        let mC = managerCard(managerData);
+        let eC = engineerCards(engineerData);
+        let iC = internCards(internData);  
+        let x = allTheCards(mC,eC,iC);
+        writeToHTML('index.html',generateSkelleton(x));                 
         }
     });
     
@@ -132,6 +130,7 @@ function menu() {
 // Function to prompt engineer questions
 function engineer() {
     inquirer.prompt(engineerQuestions).then((answers) => {
+        
         engineerData.push(answers);
         console.log(engineerData);
         menu();
@@ -142,6 +141,7 @@ function engineer() {
 // Function to prompt intern questions
 function intern() {
     inquirer.prompt(internQuestions).then((answers) => {
+        
         internData.push(answers);
         console.log(internData);
         menu();
@@ -158,7 +158,8 @@ function writeToHTML (filename, Skelleton){
 
 // Function to create the manager card and store it in a global variable
 function managerCard (data){
-    mCard = `
+    
+    let mCard = `
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">${data[0].managerName}</h5>
@@ -173,6 +174,7 @@ function managerCard (data){
 
 // Function to create engineer cards. Parses through the array of engineerData and returns an array of engineer cards.
 function engineerCards (data){
+    let engCards = [];
     for (let i = 0; i < data.length; i ++){
         engCards.push( `
         <div class="card" style="width: 18rem;">
@@ -191,6 +193,7 @@ function engineerCards (data){
 
 // // Function to create intern cards. Parses through the array of internData and returns an array of intern cards.
 function internCards (data){
+    let intCards = [];
     for (let i = 0; i < data.length; i ++){
         intCards.push( `
         <div class="card" style="width: 18rem;">
@@ -208,26 +211,23 @@ function internCards (data){
 };
 // Creates a string from all the cards
 function allTheCards(mCard, engCards, intCards) {
-    allCards[0] = mCard;
-    allCards.push(engCards,intCards);
-    allCards.join("\n");    
-    return allCards;
+    
+  
+    return [mCard, ...engCards,...intCards].join('');   
+    
 }
 
 // Call to initialize application
 init();
 
 module.exports = {
-    init(){},
-    menu(){},
-    engineer(){},
-    intern(){},
-    writeToHTML(){},
-    managerCard(){},
-    engineerCards(){},
-    internCards(){},
-    allTheCards(){},
-    mCard,
-    allCards,
-
+    init,
+    menu,
+    engineer,
+    intern,
+    writeToHTML,
+    managerCard,
+    engineerCards,
+    internCards,
+    allTheCards
 }
